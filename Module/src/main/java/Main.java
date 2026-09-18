@@ -1,20 +1,27 @@
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+import java.util.Arrays;
 public class Main {
-    // add six to a number
-    public static int addSix(int a){
-        return a + 6;
-    }
+
+
 
     static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        IO.println(String.format("Hello and welcome!"));
+        int[] arr1 = new int[5];
+        int[] arr2 = new int[4];
+        int[] arr3 = new int[3];
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            IO.println("i = " + Main.addSix(i));
-        }
+
     }
+    public static boolean lessthanhun( int[] arr){
+        boolean ret = true;
+        for(int i = 0; i<arr.length; i++){
+            if(arr[i] >=100){
+                ret =false;
+            }
+        }
+        return ret;
+    }
+
+    
 }
+
