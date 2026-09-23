@@ -65,6 +65,55 @@ public class fakearr {
             arrfield[ind]=value;
         }
     }
+    public void insert(int ind, int ele){
+        if(ele >= arrfield.length){
+            throw new NoSuchElementException();
+        }
+        int[] newarr = new int[arrfield.length +1];
+        for(int i = 0; i<ind; i++){
+            newarr[i] =arrfield[i];
+        }
+        newarr[ind] = ele;
+        for(int j= ind+1; j<newarr.length; j++){
+            newarr[j] = arrfield[j-1];
+        }
+        arrfield = newarr;
+    }
+    public void addToEnd(int ele){
+        if(ele >= arrfield.length){
+            throw new NoSuchElementException();
+        }
+        int[] newarr = new int[arrfield.length +1];
+        for(int i=0; i < arrfield.length; i++){
+            newarr[i] = arrfield[i];
+
+        }
+        newarr[arrfield.length] = ele;
+        arrfield = newarr;
+    }
+    public void addToStart(int ele){
+        if(ele >= arrfield.length){
+            throw new NoSuchElementException();
+        }
+        int[] newarr = new int[arrfield.length +1];
+        newarr[0] = ele;
+        for(int i= 1; i<arrfield.length+1; i++){
+            newarr[i] = arrfield[i-1];
+        }
+        arrfield = newarr;
+    }
+     //check ts bc huh
+    public void remove(int ind){
+        int[] newarr = new int[arrfield.length -1];
+        for(int i = 0; i<ind; i++){
+            newarr[i] =arrfield[i];
+        }
+        for(int i= ind+1; i<arrfield.length -1; i++){
+            newarr[i-1] = arrfield[i];
+        }
+
+    }
+
 
 
 
