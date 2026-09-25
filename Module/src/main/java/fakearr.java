@@ -45,6 +45,10 @@ public class fakearr {
          return true;
     }
 
+    public fakearr empty(){
+        return new fakearr(0);
+    }
+
     public int length(){
         return aliveele;
     }
@@ -66,7 +70,7 @@ public class fakearr {
         }
     }
     public void insert(int ind, int ele){
-        if(ele >= arrfield.length){
+        if(ind >= arrfield.length){
             throw new NoSuchElementException();
         }
         int[] newarr = new int[arrfield.length +1];
@@ -78,32 +82,48 @@ public class fakearr {
             newarr[j] = arrfield[j-1];
         }
         arrfield = newarr;
+        aliveele++;
     }
+
+
+    // WORK ON THE NULL VS FULL ARRAY THING
+    //prof says not to make a new array every time, only if full
+
     public void addToEnd(int ele){
-        if(ele >= arrfield.length){
-            throw new NoSuchElementException();
+        int[] newarr;
+        if(aliveele == arrfield.length){
+             newarr = new int[(arrfield.length)*2 ];
         }
-        int[] newarr = new int[arrfield.length +1];
+        else{
+            newarr = new int[arrfield.length ];
+        }
         for(int i=0; i < arrfield.length; i++){
             newarr[i] = arrfield[i];
-
         }
         newarr[arrfield.length] = ele;
         arrfield = newarr;
+        aliveele++;
     }
     public void addToStart(int ele){
-        if(ele >= arrfield.length){
-            throw new NoSuchElementException();
+        int[] newarr;
+        if(aliveele == arrfield.length){
+            newarr = new int[(arrfield.length)*2 ];
         }
-        int[] newarr = new int[arrfield.length +1];
+        else{
+            newarr = new int[arrfield.length ];
+        }
+
+
         newarr[0] = ele;
         for(int i= 1; i<arrfield.length+1; i++){
             newarr[i] = arrfield[i-1];
         }
         arrfield = newarr;
+        aliveele++;
     }
      //check ts bc huh
     public void remove(int ind){
+
         int[] newarr = new int[arrfield.length -1];
         for(int i = 0; i<ind; i++){
             newarr[i] =arrfield[i];
@@ -111,8 +131,11 @@ public class fakearr {
         for(int i= ind+1; i<arrfield.length -1; i++){
             newarr[i-1] = arrfield[i];
         }
+        aliveele--;
 
     }
+
+
 
 
 
