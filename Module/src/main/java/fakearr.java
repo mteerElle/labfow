@@ -28,6 +28,7 @@ public class fakearr {
         }
         return eq;
     }
+    //only expect alive
 
     public boolean equalElts( fakearr other){
          int[] ar;
@@ -50,7 +51,7 @@ public class fakearr {
     }
 
     public int length(){
-        return aliveele;
+        return arrfield.length;
     }
 
     public int get(int ind){
@@ -73,15 +74,23 @@ public class fakearr {
         if(ind >= arrfield.length){
             throw new NoSuchElementException();
         }
-        int[] newarr = new int[arrfield.length +1];
-        for(int i = 0; i<ind; i++){
-            newarr[i] =arrfield[i];
+
+        for(int k =0; k < arrfield.length; k++){
+            if( arrfield[k] == 0){ //this was suppose to check if null idk
+                throw new NoSuchElementException("Theres still space between the list and where your inserting, go use set method");
+            }
         }
-        newarr[ind] = ele;
-        for(int j= ind+1; j<newarr.length; j++){
-            newarr[j] = arrfield[j-1];
+        if(aliveele >= arrfield.length){
+            int[] newarr = new int[arrfield.length *2];
+            for(int j= 0; j< arrfield.length; j++){
+                newarr[j]= arrfield[j];
+            }
+            arrfield =newarr;
         }
-        arrfield = newarr;
+        for(int i = arrfield.length-2; i>=ind; i-- ){
+            arrfield[i+1] = arrfield[i];
+        }
+        arrfield[ind]= ele;
         aliveele++;
     }
 
@@ -90,40 +99,35 @@ public class fakearr {
     //prof says not to make a new array every time, only if full
 
     public void addToEnd(int ele){
-        int[] newarr;
-        if(aliveele == arrfield.length){
-             newarr = new int[(arrfield.length)*2 ];
+        if(aliveele >= arrfield.length){
+            int[] newarr = new int[arrfield.length *2];
+            for(int j= 0; j< arrfield.length; j++){
+                newarr[j]= arrfield[j];
+            }
+            arrfield =newarr;
         }
-        else{
-            newarr = new int[arrfield.length ];
-        }
-        for(int i=0; i < arrfield.length; i++){
-            newarr[i] = arrfield[i];
-        }
-        newarr[arrfield.length] = ele;
-        arrfield = newarr;
+        arrfield[aliveele] = ele;
         aliveele++;
     }
+
+    //adds ele to tart of list
     public void addToStart(int ele){
-        int[] newarr;
-        if(aliveele == arrfield.length){
-            newarr = new int[(arrfield.length)*2 ];
+        if(aliveele >= arrfield.length){
+            int[] newarr = new int[arrfield.length *2];
+            for(int j= 0; j< arrfield.length; j++){
+                newarr[j]= arrfield[j];
+            }
+            arrfield =newarr;
         }
-        else{
-            newarr = new int[arrfield.length ];
+        for(int i = arrfield.length-2; i>=0; i-- ){
+            arrfield[i+1] = arrfield[i];
         }
-
-
-        newarr[0] = ele;
-        for(int i= 1; i<arrfield.length+1; i++){
-            newarr[i] = arrfield[i-1];
-        }
-        arrfield = newarr;
+        arrfield[0] = ele;
         aliveele++;
     }
+
      //check ts bc huh
     public void remove(int ind){
-
         int[] newarr = new int[arrfield.length -1];
         for(int i = 0; i<ind; i++){
             newarr[i] =arrfield[i];
