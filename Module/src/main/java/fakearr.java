@@ -3,8 +3,8 @@ import java.util.NoSuchElementException;
 //Class
 public class fakearr {
     //fields
-    public static int[] arrfield;
-    public static int aliveele;
+    public  int[] arrfield;
+    public  int aliveele;
 
     //Constructor
     public fakearr(int length){
@@ -27,6 +27,13 @@ public class fakearr {
             }
         }
         return eq;
+    }
+
+    public void print(){
+        for(int i= 0; i< arrfield.length; i++){
+            System.out.print(+arrfield[i]+ ", ");
+        }
+        System.out.println();
     }
     //only expect alive
 
@@ -55,7 +62,7 @@ public class fakearr {
     }
 
     public int get(int ind){
-        if(arrfield.length >= ind){
+        if(arrfield.length <= ind){
             throw new NoSuchElementException();
         }
         else{
@@ -63,12 +70,13 @@ public class fakearr {
         }
     }
     public void set(int ind, int value){
-        if(arrfield.length>= ind){
+        if(arrfield.length <= ind){
             throw new NoSuchElementException();
         }
         else{
             arrfield[ind]=value;
         }
+        this.print();
     }
     public void insert(int ind, int ele){
         if(ind >= arrfield.length){
@@ -90,7 +98,9 @@ public class fakearr {
         for(int i = arrfield.length-2; i>=ind; i-- ){
             arrfield[i+1] = arrfield[i];
         }
+
         arrfield[ind]= ele;
+        this.print();
         aliveele++;
     }
 
@@ -106,7 +116,11 @@ public class fakearr {
             }
             arrfield =newarr;
         }
+        while(arrfield[aliveele]!=0){
+            aliveele++;
+        }
         arrfield[aliveele] = ele;
+        this.print();
         aliveele++;
     }
 
@@ -123,18 +137,17 @@ public class fakearr {
             arrfield[i+1] = arrfield[i];
         }
         arrfield[0] = ele;
+        this.print();
         aliveele++;
     }
 
-     //check ts bc huh
+     //remove ele from list
     public void remove(int ind){
-        int[] newarr = new int[arrfield.length -1];
-        for(int i = 0; i<ind; i++){
-            newarr[i] =arrfield[i];
+        for(int i= ind; i<arrfield.length -1;i++){
+            arrfield[i]= arrfield[i+1];
         }
-        for(int i= ind+1; i<arrfield.length -1; i++){
-            newarr[i-1] = arrfield[i];
-        }
+        arrfield[arrfield.length-1]=0;
+        this.print();
         aliveele--;
 
     }
