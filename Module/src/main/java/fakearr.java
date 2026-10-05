@@ -19,13 +19,24 @@ public class fakearr {
     }
 
     //methods
-    public boolean equals(fakearr other){
-
-        if(this.aliveele != other.aliveele){
+    public boolean equals(Object other){
+        if(other instanceof fakearr){
+            fakearr fa = (fakearr) other;
+            if(this.aliveele != fa.aliveele){
+                return false;
+            }
+            for(int i =0; i<arrfield.length; i++){
+                if(fa.arrfield[i] != this.arrfield[i]){
+                    return false;
+                }
+            }
+            return true;
+        }
+        if(this.aliveele != fa.aliveele){
              return false;
         }
         for(int i =0; i<arrfield.length; i++){
-            if(other.arrfield[i] != this.arrfield[i]){
+            if(fa.arrfield[i] != this.arrfield[i]){
                 return false;
             }
         }
