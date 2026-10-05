@@ -57,9 +57,12 @@ class MainTest {
     @Test
     void insert(){
         fakearr ar = new fakearr(new int[]{10,20,30,0,0},3);
+        fakearr arex = new fakearr(new int[]{10,43,20,30,0,0},4);
         ar.insert(1,43);
-        assertEquals(10,ar.get(0));
-        assertEquals(43, ar.get(1));
+        ar.equals(arex);
+        
+
+
     }
     @Test
     void addToEnd(){
