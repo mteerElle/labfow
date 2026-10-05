@@ -59,8 +59,14 @@ class MainTest {
         fakearr ar = new fakearr(new int[]{10,20,30,0,0},3);
         fakearr arex = new fakearr(new int[]{10,43,20,30,0,0},4);
         ar.insert(1,43);
-        ar.equals(arex);
-        
+       // assertEquals(arex,ar);  - compares pointer not value??
+        assertEquals(true,ar.equals(arex));
+
+        fakearr ar2 = new fakearr(new int[]{1,2,3,4,5},5);
+        fakearr arex2 = new fakearr(new int[]{1,2,21,3,4,5,0,0,0,0},6);
+        ar2.insert(2,21);
+       // assertEquals(arex2, ar2);
+        assertEquals(true, ar2.equals(arex2));
 
 
     }

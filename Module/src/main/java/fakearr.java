@@ -24,9 +24,6 @@ public class fakearr {
         if(this.aliveele != other.aliveele){
              return false;
         }
-        if(this.arrfield.length != other.arrfield.length){
-            return false;
-        }
         for(int i =0; i<arrfield.length; i++){
             if(other.arrfield[i] != this.arrfield[i]){
                 return false;
