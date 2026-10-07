@@ -32,15 +32,7 @@ public class fakearr {
             }
             return true;
         }
-        if(this.aliveele != fa.aliveele){
-             return false;
-        }
-        for(int i =0; i<arrfield.length; i++){
-            if(fa.arrfield[i] != this.arrfield[i]){
-                return false;
-            }
-        }
-        return true;
+        return false;
     }
 
     //prints out arr bc i like it idk
